@@ -86,26 +86,27 @@ import {
   ];
   
   // Testimonials Data
+  // Testimonials Data for AI Investment App
   export const testimonialsData = [
     {
       name: "Sarah Johnson",
       role: "Small Business Owner",
       image: "https://randomuser.me/api/portraits/women/75.jpg",
       quote:
-        "Welth has transformed how I manage my business finances. The AI insights have helped me identify cost-saving opportunities I never knew existed.",
+        "This AI investment app has transformed how I manage my portfolio. The AI-driven insights have helped me uncover opportunities I never thought possible.",
     },
     {
       name: "Michael Chen",
       role: "Freelancer",
       image: "https://randomuser.me/api/portraits/men/75.jpg",
       quote:
-        "The receipt scanning feature saves me hours each month. Now I can focus on my work instead of manual data entry and expense tracking.",
+        "The automated tracking and analysis features save me so much time. I can now focus on growing my investments without worrying about the details.",
     },
     {
       name: "Emily Rodriguez",
       role: "Financial Advisor",
       image: "https://randomuser.me/api/portraits/women/74.jpg",
       quote:
-        "I recommend Welth to all my clients. The multi-currency support and detailed analytics make it perfect for international investors.",
+        "I recommend this app to all my clients. Its AI-powered recommendations and multi-market support make it an essential tool for modern investors.",
     },
   ];
