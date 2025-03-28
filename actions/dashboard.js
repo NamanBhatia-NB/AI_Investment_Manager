@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
@@ -55,13 +55,13 @@ export async function createAccount(data) {
             },
         });
 
-        const serializedAccount =serializeTransaction(account);
+        const serializedAccount = serializeTransaction(account);
 
         revalidatePath("/dashboard");
 
-        return {success:true, data : serializedAccount};
+        return { success: true, data: serializedAccount };
     }
-    catch (error) { 
+    catch (error) {
         throw new Error(error.message);
     }
 
