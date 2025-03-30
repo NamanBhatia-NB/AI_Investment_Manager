@@ -1,7 +1,4 @@
 import HeroSection from "../components/HeroSection";
-import Features from "../components/Features";
-import HowItWorks from "../components/HowItWorks";
-import CTA from "../components/CTA";
 import { featuresData, howItWorksData, statsData, testimonialsData } from "@/data/landing";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";

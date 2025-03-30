@@ -1,38 +1,30 @@
-/*
-  Warnings:
-
-  - You are about to drop the `AIQuery` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Holding` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Portfolio` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Transaction` table. If the table is not empty, all the data it contains will be lost.
-
-*/
 -- CreateEnum
 CREATE TYPE "AccountType" AS ENUM ('CASH', 'BANK', 'BROKERAGE', 'CRYPTO');
 
--- DropForeignKey
-ALTER TABLE "AIQuery" DROP CONSTRAINT "AIQuery_userId_fkey";
+-- CreateEnum
+CREATE TYPE "TransactionType" AS ENUM ('BUY', 'SELL');
 
--- DropForeignKey
-ALTER TABLE "Holding" DROP CONSTRAINT "Holding_portfolioId_fkey";
+-- CreateEnum
+CREATE TYPE "TransactionStatus" AS ENUM ('PENDING', 'COMPLETED', 'FAILED');
 
--- DropForeignKey
-ALTER TABLE "Portfolio" DROP CONSTRAINT "Portfolio_userId_fkey";
+-- CreateEnum
+CREATE TYPE "riskProfile" AS ENUM ('LOW', 'MODERATE', 'HIGH');
 
--- DropForeignKey
-ALTER TABLE "Transaction" DROP CONSTRAINT "Transaction_userId_fkey";
+-- CreateEnum
+CREATE TYPE "RecurringInterval" AS ENUM ('DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY');
 
--- DropTable
-DROP TABLE "AIQuery";
+-- CreateTable
+CREATE TABLE "users" (
+    "id" TEXT NOT NULL,
+    "clerkUserId" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "imageUrl" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
--- DropTable
-DROP TABLE "Holding";
-
--- DropTable
-DROP TABLE "Portfolio";
-
--- DropTable
-DROP TABLE "Transaction";
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "accounts" (
@@ -86,6 +78,10 @@ CREATE TABLE "transactions" (
     "price" DECIMAL(65,30) NOT NULL,
     "totalAmount" DECIMAL(65,30) NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "isRecurring" BOOLEAN NOT NULL DEFAULT false,
+    "recurringInterval" "RecurringInterval",
+    "nextRecurringDate" TIMESTAMP(3),
+    "lastProcessed" TIMESTAMP(3),
 
     CONSTRAINT "transactions_pkey" PRIMARY KEY ("id")
 );
@@ -100,6 +96,12 @@ CREATE TABLE "ai_queries" (
 
     CONSTRAINT "ai_queries_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_clerkUserId_key" ON "users"("clerkUserId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE INDEX "accounts_userId_idx" ON "accounts"("userId");

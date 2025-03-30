@@ -71,19 +71,23 @@ model Holding {
 }
 
 model Transaction {
-  id              String             @id @default(uuid())
-  userId          String
-  user            User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accountId       String             // Which account was used for the transaction
-  account         Account            @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  assetName       String
-  ticker          String
-  transactionType TransactionType    // "BUY" or "SELL"
-  status          TransactionStatus  // "PENDING", "COMPLETED", "FAILED"
-  quantity        Decimal
-  price           Decimal
-  totalAmount     Decimal
-  timestamp       DateTime @default(now())
+  id                String             @id @default(uuid())
+  userId            String
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId         String             // Which account was used for the transaction
+  account           Account            @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  assetName         String
+  ticker            String
+  transactionType   TransactionType    // "BUY" or "SELL"
+  status            TransactionStatus  // "PENDING", "COMPLETED", "FAILED"
+  quantity          Decimal
+  price             Decimal
+  totalAmount       Decimal
+  timestamp         DateTime @default(now())
+  isRecurring       Boolean           @default(false)
+  recurringInterval RecurringInterval? // Only used if isRecurring is true
+  nextRecurringDate DateTime?         // Next date for recurring transaction
+  lastProcessed     DateTime?         // Last time this recurring transaction was processed
 
   @@index([userId, accountId])
   @@map("transactions")
@@ -122,4 +126,11 @@ enum riskProfile {
   LOW
   MODERATE
   HIGH
+}
+
+enum RecurringInterval {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
 }

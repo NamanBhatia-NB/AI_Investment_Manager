@@ -2,10 +2,10 @@ import React from 'react'
 
 const MainLayout = ({children}) => {
   return (
-    <div className='continer mx-auto my-32'>
+    <div className='container mx-auto my-32'>
       {children}
     </div>
   )
 }
 
-export default MainLayout
+export default MainLayout;

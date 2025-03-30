@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function NotFound() {
     return (
         <div>
-            <div className="continer mx-auto py-16 flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-6">
+            <div className="container mx-auto flex flex-col items-center justify-center min-h-screen px-6">
                 <motion.h1
                     className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400"
                     initial={{ opacity: 0, y: -20 }}
@@ -26,7 +26,7 @@ export default function NotFound() {
                 </motion.h2>
 
                 <motion.p
-                    className="text-gray-400 mt-3 text-center max-w-md"
+                    className="text-gray-600 mt-3 text-center max-w-md"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.7 }}
