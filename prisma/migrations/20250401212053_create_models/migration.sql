@@ -46,7 +46,6 @@ CREATE TABLE "portfolios" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "totalValue" DECIMAL(65,30) NOT NULL DEFAULT 0.0,
-    "riskProfile" "riskProfile" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "portfolios_pkey" PRIMARY KEY ("id")
@@ -105,6 +104,12 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE INDEX "accounts_userId_idx" ON "accounts"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "portfolios_userId_key" ON "portfolios"("userId");
+
+-- CreateIndex
+CREATE INDEX "portfolios_userId_idx" ON "portfolios"("userId");
 
 -- CreateIndex
 CREATE INDEX "transactions_userId_accountId_idx" ON "transactions"("userId", "accountId");

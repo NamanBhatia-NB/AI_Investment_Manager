@@ -1,16 +1,30 @@
-import { getUserAccounts } from '@/actions/dashboard';
-import CreateAccountDrawer from '@/components/create-account-drawer';
-import { Card, CardContent } from '@/components/ui/card';
-import { Plus } from 'lucide-react';
 import React from 'react'
+import { Plus } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { getUserAccounts } from '@/actions/dashboard';
+import { getCurrentBudget } from '@/actions/budget';
 import AccountCard from './_components/account-card';
+import CreateAccountDrawer from '@/components/create-account-drawer';
+import InvestmentProgress from './_components/investment-progress';
 
 async function DashboardPage() {
   const accounts = await getUserAccounts();
 
+  const defaultAccount = accounts?.find((account) => account.isDefault);
+  let budgetData = null;
+  if (defaultAccount) {
+    budgetData = await getCurrentBudget(defaultAccount.id);
+  }
+
   return (
-    <div className='px-5'>
+    <div className='space-y-8'>
       {/* Investment Progress */}
+      {defaultAccount && (
+        <InvestmentProgress
+          initialBudget={budgetData?.budget}
+          currentExpenses={budgetData?.currentExpenses || 0}
+        />
+      )}
 
       {/* Overview */}
 
