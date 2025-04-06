@@ -16,17 +16,16 @@ const InvestmentProgress = ({ initialBudget, currentExpenses }) => {
         initialBudget?.amount?.toString() || ""
     );
 
-    const percentUsed = initialBudget
-        ? (currentExpenses / initialBudget.totalValue) * 100
-        : 0;
-    
-
     const {
         loading: isLoading,
         fn: updateBudgetFn,
         data: updatedBudget,
         error,
     } = useFetch(updateBudget);
+
+    const percentUsed = initialBudget
+        ? (currentExpenses / initialBudget.totalValue) * 100
+        : 0;
 
     const handleUpdateBudget = async () => {
         const amount = parseFloat(newBudget);
@@ -39,6 +38,11 @@ const InvestmentProgress = ({ initialBudget, currentExpenses }) => {
         await updateBudgetFn(amount);
     };
 
+    const handleCancel = () => {
+        setNewBudget(initialBudget?.amount?.toString() || "");
+        setIsEditing(false);
+    }
+
     useEffect(() => {
         if (updatedBudget?.success) {
             setIsEditing(false);
@@ -46,17 +50,13 @@ const InvestmentProgress = ({ initialBudget, currentExpenses }) => {
         }
     }, [updatedBudget])
 
+    console.log(updatedBudget)
+
     useEffect(() => {
         if (error) {
             toast.error(error.message || "Failed to update budget !")
         }
     }, [error])
-
-
-    const handleCancel = () => {
-        setNewBudget(initialBudget?.amount?.toString() || "");
-        setIsEditing(false);
-    }
 
     return (
         <Card>

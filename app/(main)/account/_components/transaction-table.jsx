@@ -44,7 +44,6 @@ const TransactionTable = ({ transactions }) => {
     // Apply search filter
     if (searchTerm) {
       const searchLower = searchTerm.toLowerCase();
-      console.log(searchLower)
       result = result.filter((transaction) =>
         transaction.assetName?.toLowerCase().includes(searchLower)
       );

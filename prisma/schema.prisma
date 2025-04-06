@@ -44,14 +44,15 @@ model Account {
 }
 
 model Portfolio {
-  id          String      @id @default(uuid())
-  userId      String      @unique
-  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  totalValue  Decimal     @default(0.0)
-  createdAt   DateTime    @default(now())
+  id            String      @id @default(uuid())
+  userId        String      @unique
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalValue    Decimal     @default(0.0)
+  lastAlertSent DateTime?
+  createdAt     DateTime    @default(now())
 
-  holdings    Holding[]
-  accounts    Account[]   // Multiple accounts can be linked to a portfolio
+  holdings      Holding[]
+  accounts      Account[]   // Multiple accounts can be linked to a portfolio
 
   @@index([userId])
   @@map("portfolios")

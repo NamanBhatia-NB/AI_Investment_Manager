@@ -46,6 +46,7 @@ CREATE TABLE "portfolios" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "totalValue" DECIMAL(65,30) NOT NULL DEFAULT 0.0,
+    "lastAlertSent" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "portfolios_pkey" PRIMARY KEY ("id")
