@@ -50,8 +50,6 @@ const InvestmentProgress = ({ initialBudget, currentExpenses }) => {
         }
     }, [updatedBudget])
 
-    console.log(updatedBudget)
-
     useEffect(() => {
         if (error) {
             toast.error(error.message || "Failed to update budget !")

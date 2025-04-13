@@ -1,18 +1,47 @@
-"use server";
+"use server"
 
+import aj from "@/lib/arcjet";
+import { request } from "@arcjet/next";
 import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 const serializeAmount = (obj) => ({
     ...obj,
-    totalAmount: obj.totalAmount.toNumber(),
-})
+    totalAmount: obj.totalAmount?.toNumber?.() ?? obj.totalAmount,
+    quantity: obj.quantity?.toNumber?.() ?? obj.quantity,
+});
 
 export async function createTransaction(data) {
     try {
         const { userId } = await auth();
         if (!userId) throw new Error("Unauthorized");
+
+        // Get request Data for ArcJet
+        const req = await request();
+
+        // Check rate limit
+        const decision = await aj.protect(req, {
+            userId,
+            requested: 1, // Specify how many tokens to consume
+        });
+
+        if (decision.isDenied()) {
+            if (decision.reason.isRateLimit()) {
+                const { remaining, reset } = decision.reason;
+                console.error({
+                    code: "RATE_LIMIT_EXCEEDED",
+                    details: {
+                        remaining,
+                        resetInSeconds: reset,
+                    },
+                });
+
+                throw new Error("Too many requests. Please try again later.");
+            }
+
+            throw new Error("Request Blocked.");
+        }
 
         const user = await db.user.findUnique({
             where: { clerkUserId: userId },
@@ -25,12 +54,12 @@ export async function createTransaction(data) {
         const account = await db.account.findUnique({
             where: {
                 id: data.accountId,
-                userId: user.id
+                userId: user.id,
             },
         });
 
         if (!account) {
-            throw new Error("Account not found.");
+            throw new Error("Account not found");
         }
 
         const balanceChange = data.transactionType === "BUY" ? -data.totalAmount : data.totalAmount;
@@ -41,7 +70,13 @@ export async function createTransaction(data) {
                 data: {
                     ...data,
                     userId: user.id,
-                    nextRecurringDate: data.isRecurring && data.recurringInterval ? calculateNextRecurringDate(data.timestamp, data.recurringInterval) : null,
+                    nextRecurringDate:
+                        data.isRecurring && data.recurringInterval
+                            ? calculateNextRecurringDate(data.timestamp, data.recurringInterval) : null,
+                    status: "COMPLETED",
+                    quantity: data.quantity || 0,
+                    ticker: "",
+                    description: data.description || "",
                 },
             });
 
@@ -52,34 +87,38 @@ export async function createTransaction(data) {
 
             return newTransaction;
         });
+
         revalidatePath("/dashboard");
         revalidatePath(`/account/${transaction.accountId}`);
 
-        return { success: true, data: serializeAmount(transaction) };
+        return {
+            success: true,
+            data: serializeAmount(transaction),
+        };
     }
     catch (error) {
         throw new Error(error.message);
     }
 }
 
-// Helper function to calculate next recurring date
+// Helper function to calculate the next recurring date
 function calculateNextRecurringDate(startDate, interval) {
-    const date = new Date(startDate);
+    const timestamp = new Date(startDate);
 
     switch (interval) {
         case "DAILY":
-            date.setDate(date.getDate() + 1);
+            timestamp.setDate(timestamp.getDate() + 1);
             break;
         case "WEEKLY":
-            date.setDate(date.getDate() + 7);
+            timestamp.setDate(timestamp.getDate() + 7);
             break;
         case "MONTHLY":
-            date.setMonth(date.getMonth() + 1);
+            timestamp.setMonth(timestamp.getMonth() + 1);
             break;
         case "YEARLY":
-            date.setFullYear(date.getFullYear() + 1);
+            timestamp.setFullYear(timestamp.getFullYear() + 1);
             break;
     }
 
-    return date;
+    return timestamp;
 }

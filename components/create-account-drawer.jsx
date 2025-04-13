@@ -88,13 +88,13 @@ const CreateAccountDrawer = ({ children }) => {
                                 onValueChange={(value) => setValue("type", value)}
                                 defaultValue={watch("type")}
                             >
-                                
+
                                 <SelectTrigger id="type" className="w-48">
                                     <SelectValue placeholder="Select Account Type" />
                                 </SelectTrigger>
                                 <SelectContent className="">
                                     <SelectItem value="CASH">Cash</SelectItem>
-                                    <SelectItem  value="BANK">Bank</SelectItem>
+                                    <SelectItem value="BANK">Bank</SelectItem>
                                     <SelectItem value="BROKERAGE">Brokerage</SelectItem>
                                     <SelectItem value="CRYPTO">Crypto</SelectItem>
                                 </SelectContent>

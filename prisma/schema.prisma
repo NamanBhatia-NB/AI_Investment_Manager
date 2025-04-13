@@ -78,11 +78,11 @@ model Transaction {
   accountId         String             // Which account was used for the transaction
   account           Account            @relation(fields: [accountId], references: [id], onDelete: Cascade)
   assetName         String
-  ticker            String
+  ticker            String            
+  description       String             @default("")
   transactionType   TransactionType    // "BUY" or "SELL"
   status            TransactionStatus  // "PENDING", "COMPLETED", "FAILED"
   quantity          Decimal
-  price             Decimal
   totalAmount       Decimal
   timestamp         DateTime @default(now())
   isRecurring       Boolean           @default(false)

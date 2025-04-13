@@ -242,6 +242,8 @@ const TransactionTable = ({ transactions }) => {
                 </div>
               </TableHead>
 
+              <TableHead>Description</TableHead>
+
               <TableHead
                 className="cursor-pointer"
                 onClick={() => { handleSort("totalAmount") }}
@@ -294,6 +296,16 @@ const TransactionTable = ({ transactions }) => {
                       {transaction.transactionType}
                     </span>
                   </TableCell>
+
+                  <TableCell className="capitalize">
+                    <span
+                      className="px-2 py-1 rounded text-black text-sm"
+                    >
+                      {transaction.description}
+                    </span>
+                  </TableCell>
+
+
                   <TableCell
                     className='text-right font-medium'
                     style={{
@@ -335,7 +347,7 @@ const TransactionTable = ({ transactions }) => {
                   </TableCell>
                   <TableCell>
                     <DropdownMenu>
-                      <DropdownMenuTrigger>
+                      <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="h-8 w-8 p-0">
                           <MoreHorizontal className='h-4 w-4' />
                         </Button>
@@ -353,7 +365,7 @@ const TransactionTable = ({ transactions }) => {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           className="text-destructive"
-                          onClick={() =>  deleteFn([transaction.id]) }
+                          onClick={() => deleteFn([transaction.id])}
                         >Delete</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
