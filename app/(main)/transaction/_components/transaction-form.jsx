@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import ReceiptScanner from './receipt-scanner';
 
 const AddTransactionForm = ({ accounts, categories }) => {
   const router = useRouter();
@@ -68,8 +69,24 @@ const AddTransactionForm = ({ accounts, categories }) => {
       reset();
       router.push(`/account/${transactionResult.data.accountId}`);
     }
-    // toast.error(transactionResult?.error || "Something went wrong. Please try again.");
+    toast.error(transactionResult?.error || "Something went wrong. Please try again.");
   }, [transactionResult, transactionLoading]);
+
+  const handleScanComplete = (scannedData) => {
+    // console.log(scannedData);
+
+    if (scannedData) {
+      setValue("amount", scannedData.amount.toString());
+      setValue("date", new Date(scannedData.date));
+      if (scannedData.description) {
+        setValue("description", scannedData.description);
+      }
+
+      if (scannedData.category) {
+        setValue("category", scannedData.category);
+      }
+    }
+  };
 
   // const filteredCategories = categories.filter(
   //   (category) => category.type === type
@@ -78,7 +95,7 @@ const AddTransactionForm = ({ accounts, categories }) => {
   return (
     <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
       {/* AI Receipt Scanner */}
-
+      <ReceiptScanner onScanComplete={handleScanComplete} />
 
       <div className='space-y-2'>
         <label className='text-sm font-medium'>Type</label>
@@ -89,7 +106,6 @@ const AddTransactionForm = ({ accounts, categories }) => {
           }}
           defaultValue={transactionType}
         >
-
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Transaction Type" />
           </SelectTrigger>
