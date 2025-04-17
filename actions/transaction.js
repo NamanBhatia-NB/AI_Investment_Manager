@@ -130,30 +130,42 @@ export async function scanReceipt(file) {
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-        // Convert file to ArrayBuffer
+        // Convert File to ArrayBuffer
         const arrayBuffer = await file.arrayBuffer();
 
         // Convert ArrayBuffer to Base64
         const base64String = Buffer.from(arrayBuffer).toString("base64");
 
         const prompt = `
-            Analyze this receipt image and extract the following information in JSON format:
-            - Total amount (just the number)
-            - Date (in ISO format)
-            - Description or items purchased (brief summary)
-            - Merchant/store name
-            - Suggested category (one of: housing,transportation,groceries,utilities,entertainment,food,shopping,healthcare,education,personal,travel,insurance,gifts,bills,other-expense )
-            
-            Only respond with valid JSON in this exact format:
+            You are an intelligent financial assistant.
+
+            Analyze the uploaded **receipt or investment transaction slip** and extract the following details. Return only a valid JSON object with this exact format:
+
             {
-                "amount": number,
-                "date": "ISO date string",
-                "description": "string",
-                "merchantName": "string",
-                "category": "string"
+            "assetName" : "string",             // Name of the asset or share
+            "amount": number,                   // Total transaction amount
+            "date": "ISO date string",          // Date of the transaction (e.g., "2025-04-13T00:00:00.000Z")
+            "description": "string",            // Brief description of the asset or transaction
+            "transactionType": "string",        // Either "BUY" or "SELL"
+            "isRecurring": boolean              // true if this is a recurring investment, false otherwise
+            "recurringInterval":"string" // DAILY, WEEKLY, MONTHLY, YEARLY
             }
 
-            If its not a recipt, return an empty object
+            📌 Notes:
+            - Return **only** a clean JSON object. Do NOT include \`\`\`json, explanations, or extra text.
+            - If this image is not a valid investment-related receipt or does not contain enough info, return: {}
+            - Prefer uppercase values for "transactionType".
+
+            ✅ Example output:
+            {
+            "assetName":"Tata",
+            "amount": 1500.00,
+            "date": "2025-04-01T00:00:00.000Z",
+            "description": "Mutual fund purchase via Groww",
+            "transactionType": "BUY",
+            "isRecurring": true,
+            "recurringInterval":"MONTHLY"
+            }
         `;
 
         const result = await model.generateContent([
@@ -167,17 +179,19 @@ export async function scanReceipt(file) {
         ]);
 
         const response = await result.response;
-        const text = response.text;
+        const text = response.text();
         const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
 
         try {
             const data = JSON.parse(cleanedText);
             return {
+                assetName: data.assetName,
                 amount: parseFloat(data.amount),
                 date: new Date(data.date),
                 description: data.description,
-                category: data.category,
-                merchantName: data.merchantName,
+                transactionType: data.transactionType?.toLowerCase() === "sell" ? "SELL" : "BUY",
+                isRecurring: Boolean(data.isRecurring),
+                recurringInterval:data.recurringInterval
             };
         } catch (parseError) {
             console.error("Error parsing JSON response :", parseError);

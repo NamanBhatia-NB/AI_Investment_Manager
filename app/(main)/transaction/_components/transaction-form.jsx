@@ -19,7 +19,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import ReceiptScanner from './receipt-scanner';
 
-const AddTransactionForm = ({ accounts, categories }) => {
+const AddTransactionForm = ({ accounts }) => {
   const router = useRouter();
 
   const {
@@ -73,20 +73,27 @@ const AddTransactionForm = ({ accounts, categories }) => {
   }, [transactionResult, transactionLoading]);
 
   const handleScanComplete = (scannedData) => {
-    // console.log(scannedData);
+    console.log(scannedData);
 
     if (scannedData) {
-      setValue("amount", scannedData.amount.toString());
-      setValue("date", new Date(scannedData.date));
-      if (scannedData.description) {
-        setValue("description", scannedData.description);
+      setValue("assetName", scannedData.assetName || "");
+      setValue("totalAmount", scannedData.amount.toString());
+      setValue("timestamp", new Date(scannedData.date));
+      setValue("description", scannedData.description || "");
+
+      if (scannedData.transactionType) {
+        setValue("transactionType", scannedData.transactionType.toUpperCase());
       }
 
-      if (scannedData.category) {
-        setValue("category", scannedData.category);
+      if (typeof scannedData.isRecurring === "boolean") {
+        setValue("isRecurring", scannedData.isRecurring);
+      }
+      if (scannedData.isRecurring && scannedData.recurringInterval) {
+        setValue("recurringInterval", scannedData.recurringInterval.toUpperCase());
       }
     }
   };
+
 
   // const filteredCategories = categories.filter(
   //   (category) => category.type === type
