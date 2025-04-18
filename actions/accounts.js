@@ -147,9 +147,9 @@ export async function bulkDeleteTransactions(transactionIds) {
                     },
                 });
             }
-            revalidatePath("/dashboard");
-            revalidatePath("/account/[id]");
         });
+        revalidatePath("/dashboard");
+        revalidatePath("/account/[id]");
 
         return { success: true };
 

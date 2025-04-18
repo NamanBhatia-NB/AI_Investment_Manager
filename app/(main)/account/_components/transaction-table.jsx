@@ -259,7 +259,7 @@ const TransactionTable = ({ transactions }) => {
                 </div>
               </TableHead>
 
-              <TableHead>Reccuring</TableHead>
+              <TableHead>Recurring</TableHead>
 
               <TableHead className="w-[50px]" />
 
