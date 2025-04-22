@@ -23,7 +23,7 @@
 `Code Breakers`
 
 ### Team Members:  
-- Shivam Mishra (Team Leader)  
+- Shivam Mishra (Leader)  
 - Naman Bhatia  (Member)
 - Sudhanshu Sharma (Member)
 - Gomini Gautam (Member)
@@ -108,17 +108,17 @@ git clone https://github.com/NamanBhatia-NB/AI_Investment_Manager
 ```
 
 # Install dependencies
+```
 cd AI_Investment_Manager
 npx prisma generate
 npm install --legacy-peer-deps
+```
 
 ```
 
 # Start development server
 npm run dev
 ```
-
-Provide any backend/frontend split or environment setup notes here.
 
 ---
 
