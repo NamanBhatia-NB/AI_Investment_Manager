@@ -133,7 +133,7 @@ npm run dev
 - Environmental Impact Tracking: Calculate the environmental impact of user investments (e.g., “Your portfolio supports 5 tons of CO2 reduction annually”) to encourage eco:conscious decisions. 
 - Mobile App Development: iOS and Android App: Develop a mobile app with a native UI, offering the same features as the web platform, including real:time market alerts via push notifications. 
 - Offline Mode: Allow users to access tutorials and saved recommendations offline, ensuring usability in areas with limited internet connectivity.
-- 
+ 
 - The future development ideas are expanded with specific examples (e.g., predictive analysis outputs, ESG scores), showing a clear vision for the platform’s growth. 
 - Sustainability features align with the challenge’s potential environmental focus, adding a broader impact dimension to the project. 
 - The mobile app development includes practical considerations like offline mode, addressing India’s connectivity challenges and enhancing accessibility.
