@@ -88,6 +88,7 @@ None
 - Gemini API Key
 - .env file setup (if needed)
 - .env.local:
+```
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY= 
 NEXT_PUBLIC_CLERK_SIGN_IN_URL = sign-in
@@ -96,7 +97,8 @@ DATABASE_URL=""
 DIRECT_URL=""
 ARCJET_KEY = 
 RESEND_API_KEY =  
-GEMINI_API_KEY =  
+GEMINI_API_KEY =
+```
 
 ### Local Setup:
 ```bash
