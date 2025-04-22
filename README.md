@@ -1,6 +1,6 @@
 
 # 🚀 Project Title
- GenAI:powered financial assistant
+ GenAI Powered financial assistant
 
 ## 📌 Problem Statement
 **PS 6: Better Finance for Everyone with Stellar**
