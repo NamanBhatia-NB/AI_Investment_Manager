@@ -86,7 +86,7 @@ None
 - Node.js
 - Gemini API Key (needed)
 - .env file setup (needed)
-- .env.local:
+- .env :
 ```
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY= 
@@ -98,7 +98,7 @@ ARCJET_KEY =
 RESEND_API_KEY =  
 GEMINI_API_KEY =
 ```
-- When localhost:3000 is loaded then at the bottom right corner click on claim clerk keys and add informationa and paste keys from there in env.local
+- When localhost:3000 is loaded then at the bottom right corner click on claim clerk keys and add informationa and paste keys from there in .env file.
 - Also paste other keys as given.
 
 ### Local Setup:
@@ -125,20 +125,18 @@ npm run dev
 
 ## 🧬 Future Scope
 
-Additional Details/Future Development
-Advanced AI Features: 
-Predictive Market Trend Analysis: Use GenAI to analyze historical market data and predict trends, helping users make proactive investment decisions (e.g., “Stock XYZ is likely to rise 10% next month”). 
-Multilingual Support: Add support for regional languages like Hindi, Tamil, and Bengali, using Gemini AI’s language capabilities to make the platform accessible to non:English speakers in India. 
-Sustainability Features: 
-ESG Investment Recommendations: Recommend investments in companies with strong Environmental, Social, and Governance (ESG) scores, promoting sustainable investing. 
-Environmental Impact Tracking: Calculate the environmental impact of user investments (e.g., “Your portfolio supports 5 tons of CO2 reduction annually”) to encourage eco:conscious decisions. 
-Mobile App Development: 
-iOS and Android App: Develop a mobile app with a native UI, offering the same features as the web platform, including real:time market alerts via push notifications. 
-Offline Mode: Allow users to access tutorials and saved recommendations offline, ensuring usability in areas with limited internet connectivity.
-
-The future development ideas are expanded with specific examples (e.g., predictive analysis outputs, ESG scores), showing a clear vision for the platform’s growth. 
-Sustainability features align with the challenge’s potential environmental focus, adding a broader impact dimension to the project. 
-The mobile app development includes practical considerations like offline mode, addressing India’s connectivity challenges and enhancing accessibility.
+- Additional Details/Future Development
+- Advanced AI Features: 
+- Predictive Market Trend Analysis: Use GenAI to analyze historical market data and predict trends, helping users make proactive investment decisions (e.g., “Stock XYZ is likely to rise 10% next month”). 
+- Multilingual Support: Add support for regional languages like Hindi, Tamil, and Bengali, using Gemini AI’s language capabilities to make the platform accessible to non:English speakers in India. 
+- Sustainability Features: ESG Investment Recommendations: Recommend investments in companies with strong Environmental, Social, and Governance (ESG) scores, promoting sustainable investing. 
+- Environmental Impact Tracking: Calculate the environmental impact of user investments (e.g., “Your portfolio supports 5 tons of CO2 reduction annually”) to encourage eco:conscious decisions. 
+- Mobile App Development: iOS and Android App: Develop a mobile app with a native UI, offering the same features as the web platform, including real:time market alerts via push notifications. 
+- Offline Mode: Allow users to access tutorials and saved recommendations offline, ensuring usability in areas with limited internet connectivity.
+- 
+- The future development ideas are expanded with specific examples (e.g., predictive analysis outputs, ESG scores), showing a clear vision for the platform’s growth. 
+- Sustainability features align with the challenge’s potential environmental focus, adding a broader impact dimension to the project. 
+- The mobile app development includes practical considerations like offline mode, addressing India’s connectivity challenges and enhancing accessibility.
 
 ---
 
