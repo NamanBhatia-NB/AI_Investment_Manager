@@ -9,12 +9,11 @@
 
 ## 🎯 Objective
 
--A GenAI:powered financial assistant designed to help users make better investment decisions. 
--Built with Next.js, Tailwind CSS, Gemini AI, Prisma, and Supabase. 
--Features include conversational AI for investment queries, personalized recommendations, and financial literacy tools. 
--Addresses the lack of financial guidance in India, where literacy levels are low.
-
-
+- A GenAI:powered financial assistant designed to help users make better investment decisions. 
+- Built with Next.js, Tailwind CSS, Gemini AI, Prisma, and Supabase. 
+- Features include conversational AI for investment queries, personalized recommendations, and financial literacy tools. 
+- Addresses the lack of financial guidance in India, where literacy levels are low.
+  
 ---
 
 ## 🧠 Team & Approach
@@ -30,20 +29,20 @@
 
 ### Your Approach:  
 
--How different is it from any of the other existing ideas? 
--Unlike traditional financial advisors, this assistant uses GenAI to provide conversational, real:time investment guidance tailored to user needs.
--How will it be able to solve the problem? 
--By offering personalized investment advice and financial literacy tools, it bridges the gap for millions of Indian investors lacking guidance.
--USP of the proposed solution: 
--Seamless integration of AI with a full:stack app, providing real:time insights and a user:friendly experience. Conversational AI that scales to support millions, providing accessible, user:friendly financial education and investment insights.
+- How different is it from any of the other existing ideas? 
+- Unlike traditional financial advisors, this assistant uses GenAI to provide conversational, real:time investment guidance tailored to user needs.
+- How will it be able to solve the problem? 
+- By offering personalized investment advice and financial literacy tools, it bridges the gap for millions of Indian investors lacking guidance.
+- USP of the proposed solution: 
+- Seamless integration of AI with a full:stack app, providing real:time insights and a user:friendly experience. Conversational AI that scales to support millions, providing accessible, user:friendly financial education and investment insights.
 
 ---
 
 ## 🛠️ Tech Stack
--Next.js
--Prisma
--Clerk
--Supabase
+- Next.js
+- Prisma
+- Clerk
+- Supabase
 
 ### Core Technologies Used:
 - Frontend and Backend: Next.js, clerk
@@ -55,12 +54,12 @@ None
 ---
 
 ## ✨ Key Features
--Conversational AI for answering investment queries (e.g., “Should I invest in mutual funds?”) 
--Personalized investment recommendations based on user risk profiles 
--Financial literacy tutorials and quizzes to educate users 
--Real:time market analysis and alerts for investment opportunities 
--Secure user authentication and data privacy (using Clerk and ArcJet) 
--Interactive dashboard with investment performance tracking
+- Conversational AI for answering investment queries (e.g., “Should I invest in mutual funds?”) 
+- Personalized investment recommendations based on user risk profiles 
+- Financial literacy tutorials and quizzes to educate users 
+- Real:time market analysis and alerts for investment opportunities 
+- Secure user authentication and data privacy (using Clerk and ArcJet) 
+- Interactive dashboard with investment performance tracking
 
 ---
 
@@ -85,8 +84,8 @@ None
 
 ### Requirements:
 - Node.js
-- Gemini API Key
-- .env file setup (if needed)
+- Gemini API Key (needed)
+- .env file setup (needed)
 - .env.local:
 ```
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
@@ -99,6 +98,8 @@ ARCJET_KEY =
 RESEND_API_KEY =  
 GEMINI_API_KEY =
 ```
+- When localhost:3000 is loaded then at the bottom right corner click on claim clerk keys and add informationa and paste keys from there in env.local
+- Also paste other keys as given.
 
 ### Local Setup:
 ```bash
