@@ -7,6 +7,7 @@ export default function EmailTemplate({
     data = {},
 }) {
     if (type === "monthly-report") {
+        console.log(data)
         return (
             <Html>
                 <Head />
@@ -23,15 +24,15 @@ export default function EmailTemplate({
                         <Section style={styles.statsContainer}>
                             <div style={styles.stat}>
                                 <Text style={styles.text}>Total Income</Text>
-                                <Text style={styles.heading}>₹ {data?.stats.totalSell}</Text>
+                                <Text style={styles.heading}>₹ {data?.stats.totalSell.toFixed(2)}</Text>
                             </div>
                             <div style={styles.stat}>
                                 <Text style={styles.text}>Total Expenses</Text>
-                                <Text style={styles.heading}>₹ {data?.stats.totalBuy}</Text>
+                                <Text style={styles.heading}>₹ {data?.stats.totalBuy.toFixed(2)}</Text>
                             </div>
                             <div style={styles.stat}>
                                 <Text style={styles.text}>Net </Text>
-                                <Text style={styles.heading}>₹ {data?.stats.totalSell - data?.stats.totalBuy}</Text>
+                                <Text style={styles.heading}>₹ {(data?.stats.totalSell - data?.stats.totalBuy).toFixed(2)}</Text>
                             </div>
                         </Section>
 
@@ -41,10 +42,12 @@ export default function EmailTemplate({
                                 <Heading style={styles.heading}>By Asset Name</Heading>
                                 {Object.entries(data?.stats.byAssetName).map(
                                     ([assetName, totalAmount]) => {
-                                        <div key={assetName}>
-                                            <Text style={styles.text}>{assetName}</Text>
-                                            <Text style={styles.text}>₹ {totalAmount}</Text>
-                                        </div>
+                                        return (
+                                            <div key={assetName}>
+                                                <Text style={styles.text}>{assetName}</Text>
+                                                <Text style={styles.text}>₹ {totalAmount.toFixed(2)}</Text>
+                                            </div>
+                                        );
                                     }
                                 )}
                             </Section>

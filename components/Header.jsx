@@ -11,9 +11,12 @@ const Header = async () => {
   return (
     <div className='fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b'>
       <nav className='container mx-auto px-4 py-4 flex items-center justify-between'>
-        <Link href='/'>
-          <Image src={"/logo.png"} alt=' AI Feedback App Logo' width={200} height={200} className='h-16 w-auto object-contain rounded-full' />
-        </Link>
+        <div className='flex gap-6 justify-between items-center'>
+          <Link href='/'>
+            <Image src={"/logo.png"} alt=' AI Feedback App Logo' width={200} height={200} className='h-16 w-auto object-contain rounded-full' />
+          </Link>
+          <div className='font-bold text-2xl mt-2 gradient-title'>AI Investment Manager</div>
+        </div>
         <div className='flex items-center space-x-4'>
           <SignedIn>
             <Link href={"/dashboard"}
