@@ -139,6 +139,20 @@ const TransactionTable = ({ transactions }) => {
     setSelectedIds([]);
   }
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const transactionsPerPage = 10;
+
+  const totalPages = Math.ceil(filteredAndSortedTransactions.length / transactionsPerPage);
+  const paginatedTransactions = filteredAndSortedTransactions.slice(
+    (currentPage - 1) * transactionsPerPage,
+    currentPage * transactionsPerPage
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, typeFilter, recurringFilter]);
+
+
   return (
     <div className='space-y-4'>
       {deleteLoading && (
@@ -271,7 +285,7 @@ const TransactionTable = ({ transactions }) => {
                 <TableCell className="text-center text-muted-foreground" colSpan={7} >No Transactions Found !</TableCell>
               </TableRow>
             ) : (
-              filteredAndSortedTransactions.map((transaction) => (
+              paginatedTransactions.map((transaction) => (
                 <TableRow key={transaction.id}>
                   <TableCell >
                     <Checkbox
@@ -378,6 +392,33 @@ const TransactionTable = ({ transactions }) => {
         </Table>
       </div>
 
+      <div className="flex justify-center items-center gap-2 mt-4">
+        <Button
+          variant="outline"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Previous
+        </Button>
+
+        {[...Array(totalPages)].map((_, index) => (
+          <Button
+            key={index}
+            variant={currentPage === index + 1 ? "default" : "outline"}
+            onClick={() => setCurrentPage(index + 1)}
+          >
+            {index + 1}
+          </Button>
+        ))}
+
+        <Button
+          variant="outline"
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Next
+        </Button>
+      </div>
     </div >
   )
 }

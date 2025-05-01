@@ -4,10 +4,12 @@ import React, { useRef, useEffect } from 'react'
 import { Button } from './ui/button'
 import Image from 'next/image'
 import '../app/globals.css'
+import { useScroll } from './ScrollContext'
 
 
 const HeroSection = () => {
   const imageRef = useRef();
+  const { scrollTo, refs } = useScroll();
 
   useEffect(() => {
     const imageElement = imageRef.current;
@@ -46,11 +48,9 @@ const HeroSection = () => {
             </Button>
           </Link>
 
-          <Link href="\dashboard">
-            <Button size="lg" variant="outline" className='px-8'>
-              Demo Video
-            </Button>
-          </Link>
+          <Button onClick={() => scrollTo(refs.aboutRef)} size="lg" variant="outline" className='px-8'>
+            Learn More
+          </Button>
         </div>
         <div className='hero-image-wrapper'>
           <div className='hero-image' ref={imageRef} >

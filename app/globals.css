@@ -161,3 +161,8 @@
   background-size: 200% 200%;
   animation: gradientMove 3s ease infinite;
 }
+
+.glow {
+  filter: brightness(1.4);
+  transition: filter 0.3s ease-in-out;
+}

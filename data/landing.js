@@ -14,7 +14,7 @@ import {
       label: "Active Users",
     },
     {
-      value: "$2B+",
+      value: "₹ 2B+",
       label: "Investment Decisions made",
     },
     {
@@ -81,7 +81,7 @@ import {
       icon: <PieChart className="h-8 w-8 text-blue-600" />,
       title: "3. Get Insights",
       description:
-        "Receive AI-powered insights and recommendations to optimize your finances",
+        "Receive AI-powered insights and recommendations to optimize your investments",
     },
   ];
   

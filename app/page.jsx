@@ -1,15 +1,18 @@
+"use client"
 import HeroSection from "../components/HeroSection";
 import { featuresData, howItWorksData, statsData, testimonialsData } from "@/data/landing";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useScroll } from "@/components/ScrollContext";
 
 export default function Home() {
+  const { refs } = useScroll();
   return (
     <div className="mt-40">
       <HeroSection />
-      <section className="py-20 bg-blue-50">
+      <section ref={refs.aboutRef} className="scroll-mt-24 py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {statsData.map((statsData, index) => (
@@ -24,7 +27,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section ref={refs.featureRef} className="scroll-mt-24 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Everything you need to make smart investment decisions
@@ -43,7 +46,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-blue-50">
+      <section ref={refs.worksRef} className="scroll-mt-24 py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-16">
             How It Works
@@ -105,7 +108,7 @@ export default function Home() {
             Ready To take control of your Investments ?
           </h2>
           <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who are already managing their finances smarter with us
+            Join thousands of users who are already managing their investments smarter with us
           </p>
           <Link href="\dashboard">
             <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 animate-bounce">
@@ -114,6 +117,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
