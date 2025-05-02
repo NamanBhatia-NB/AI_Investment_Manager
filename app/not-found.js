@@ -31,7 +31,7 @@ export default function NotFound() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.7 }}
                 >
-                    It seems like you've ventured into unknown financial territory. Let’s
+                    It seems like you&#39;ve ventured into unknown financial territory. Let&#39;s
                     get you back to a safe investment!
                 </motion.p>
 

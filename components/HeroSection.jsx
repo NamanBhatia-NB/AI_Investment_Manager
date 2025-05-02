@@ -33,7 +33,7 @@ const HeroSection = () => {
 
 
   return (
-    <div className='pb-20 px-4'>
+    <div className='pb-20 px-4 overflow-x-hidden'>
       <div className='container mx-auto text-center'>
         <h1 className='text-5xl md:text-8xl lg:text-[105px] pb-6 gradient-title'>
           Smarter Investment Decisions<br />with AI Assistance
