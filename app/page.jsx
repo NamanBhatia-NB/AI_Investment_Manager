@@ -9,6 +9,7 @@ import { useScroll } from "@/components/ScrollContext";
 
 export default function Home() {
   const { refs } = useScroll();
+
   return (
     <div className="mt-40">
       <HeroSection />
