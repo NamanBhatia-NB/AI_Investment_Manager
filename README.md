@@ -54,7 +54,6 @@ None
 ---
 
 ## ✨ Key Features
-- Conversational AI for answering investment queries (e.g., “Should I invest in mutual funds?”) 
 - Personalized investment recommendations based on user risk profiles 
 - Financial literacy tutorials and quizzes to educate users 
 - Real:time market analysis and alerts for investment opportunities 
@@ -65,6 +64,7 @@ None
 
 ## 📽️ Demo & Deliverables
 
+- **Deployed Website Link:** (https://ai-investment-manager.vercel.app/)
 - **Demo Video Link:** https://youtu.be/2M2RvMh8x3A
 - **Pitch Deck / PPT Link:** https://docs.google.com/presentation/d/14pcwyclWKO6OnyWGHcm-hj87IREDGD-I/edit
 
