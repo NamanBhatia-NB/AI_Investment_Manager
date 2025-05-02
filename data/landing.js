@@ -7,10 +7,6 @@ import {
   Zap,
 } from "lucide-react";
 
-import avatar1 from "../public/avatar1.png"
-import avatar2 from "../public/avatar2.png"
-import avatar3 from "../public/avatar3.png"
-
 // Stats Data
 export const statsData = [
   {
@@ -95,21 +91,21 @@ export const testimonialsData = [
   {
     name: "Sarah Johnson",
     role: "Small Business Owner",
-    image: '/avatar2.png',
+    image: '/images/avatar2.png',
     quote:
       "This AI investment app has transformed how I manage my portfolio. The AI-driven insights have helped me uncover opportunities I never thought possible.",
   },
   {
     name: "Michael Chen",
     role: "Freelancer",
-    image: '/avatar1.png',
+    image: '/images/avatar1.png',
     quote:
       "The automated tracking and analysis features save me so much time. I can now focus on growing my investments without worrying about the details.",
   },
   {
     name: "Emily Rodriguez",
     role: "Financial Advisor",
-    image: '/avatar3.png',
+    image: '/images/avatar3.png',
     quote:
       "I recommend this app to all my clients. Its AI-powered recommendations and multi-market support make it an essential tool for modern investors.",
   },
