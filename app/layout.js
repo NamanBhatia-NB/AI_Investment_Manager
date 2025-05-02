@@ -15,7 +15,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      layout: {
+        unsafe_disableDevelopmentModeWarnings: true,
+      },
+    }}>
       <ScrollProvider>
         <html lang="en">
           <body className={`${inter.className}`}>
@@ -26,7 +30,7 @@ export default function RootLayout({ children }) {
             </main>
             <Toaster />
             {/* footer */}
-            <Footer/>
+            <Footer />
           </body>
         </html>
       </ScrollProvider>
