@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
 const COLORS = [
@@ -60,6 +60,19 @@ const DashboardOverview = ({ accounts, transactions }) => {
         })
     )
 
+    const [showLabel, setShowLabel] = useState(true);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setShowLabel(window.innerWidth >= 768); // show only on md and up
+        };
+
+        handleResize(); // Initial check
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div className='grid gap-4 md:grid-cols-2'>
             <Card>
@@ -79,7 +92,7 @@ const DashboardOverview = ({ accounts, transactions }) => {
                 <CardContent>
                     <div className='space-y-4'>
                         {recentTransactions.length === 0 ? (
-                            <p className='text-center text-muted-foreground py-4'>No recent transactions</p>
+                            <p className='text-center text-muted-foreground py-4'>No recent transactions !</p>
                         ) : (
                             recentTransactions.map((transaction) => {
                                 return (
@@ -108,7 +121,6 @@ const DashboardOverview = ({ accounts, transactions }) => {
                                         </div>
                                     </div>
                                 )
-
                             })
                         )}
                     </div>
@@ -135,7 +147,7 @@ const DashboardOverview = ({ accounts, transactions }) => {
                                         outerRadius={80}
                                         fill="#8884d8"
                                         dataKey="value"
-                                        label={({ name, value }) => `${name} : ₹ ${value.toFixed(2)}`}
+                                        label={showLabel ? ({ name, value }) => `${name} : ₹ ${value.toFixed(2)}` : ({ name, value }) => `₹ ${value.toFixed(2)}`}
                                     >
                                         {
                                             pieChartData.map((entry, index) => (

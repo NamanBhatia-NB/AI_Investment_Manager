@@ -120,7 +120,7 @@ const AddTransactionForm = ({ accounts, categories, editMode = false, initialDat
   // )
 
   return (
-    <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
+    <form className='space-y-6 px-2' onSubmit={handleSubmit(onSubmit)}>
       {/* AI Receipt Scanner */}
       {!editMode && <ReceiptScanner onScanComplete={handleScanComplete} />}
 

@@ -387,12 +387,11 @@ const TransactionTable = ({ transactions }) => {
                 </TableRow>
               ))
             )}
-
           </TableBody>
         </Table>
       </div>
 
-      <div className="flex justify-center items-center gap-2 mt-4">
+      <div className="grid md:flex justify-center items-center gap-2 mt-4">
         <Button
           variant="outline"
           disabled={currentPage === 1}
@@ -401,15 +400,18 @@ const TransactionTable = ({ transactions }) => {
           Previous
         </Button>
 
-        {[...Array(totalPages)].map((_, index) => (
-          <Button
-            key={index}
-            variant={currentPage === index + 1 ? "default" : "outline"}
-            onClick={() => setCurrentPage(index + 1)}
-          >
-            {index + 1}
-          </Button>
-        ))}
+        <div className="flex justify-center flex-wrap md:flex-nowrap gap-2 overflow-x-auto md:overflow-visible px-1">
+          {[...Array(totalPages)].map((_, index) => (
+            <Button
+              key={index}
+              className="min-w-[40px]"
+              variant={currentPage === index + 1 ? "default" : "outline"}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </Button>
+          ))}
+        </div>
 
         <Button
           variant="outline"

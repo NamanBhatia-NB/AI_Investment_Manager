@@ -61,7 +61,6 @@ const AccountChart = ({ transactions }) => {
         );
     }, [filteredData]);
 
-
     return (
         <div>
             <Card>
@@ -78,8 +77,8 @@ const AccountChart = ({ transactions }) => {
                         </SelectContent>
                     </Select>
                 </CardHeader>
-                <CardContent>
-                    <div className='flex justify-around mb-6 text-sm'>
+                <CardContent className='px-0 pr-2 md:pr-0 md:px-6'>
+                    <div className='md:flex flex-cols gap-4 md:gap-0 justify-around mb-6 text-sm'>
                         <div className='text-center'>
                             <p className='text-muted-foreground'>Total Profit</p>
                             <p className='text-lg font-bold text-green-500'>₹ {totals.profit.toFixed(2)}</p>
@@ -101,37 +100,40 @@ const AccountChart = ({ transactions }) => {
                             </p>
                         </div>
                     </div>
+                    
                     <div className='h-[300px]'>
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart
-                                data={filteredData}
-                                margin={{
-                                    top: 10,
-                                    right: 10,
-                                    left: 10,
-                                    bottom: 0,
-                                }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                                <XAxis dataKey="date" />
-                                <YAxis
-                                    fontSize={12}
-                                    tickLine={false}
-                                    axisLine={false}
-                                    tickFormatter={(value) => `₹ ${value}`}
-                                />
-                                <Tooltip formatter={(value) => [`₹ ${value}`]} />
-                                <Legend />
-                                <Bar dataKey="profit" fill="#22c55e" name='Profit' radius={[4, 4, 0, 0]} />
-                                <Bar dataKey="loss" fill="#ef4444" name='Loss' radius={[4, 4, 0, 0]} />
-                            </BarChart>
-                        </ResponsiveContainer>
+                        {transactions.length !== 0 ?
+                            (<ResponsiveContainer width="100%" height="100%">
+                                <BarChart
+                                    data={filteredData}
+                                    margin={{
+                                        top: 10,
+                                        right: 10,
+                                        left: 10,
+                                        bottom: 0,
+                                    }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                    <XAxis dataKey="date" />
+                                    <YAxis
+                                        fontSize={12}
+                                        tickLine={false}
+                                        axisLine={false}
+                                        tickFormatter={(value) => `₹ ${value}`}
+                                    />
+                                    <Tooltip formatter={(value) => [`₹ ${value}`]} />
+                                    <Legend />
+                                    <Bar dataKey="profit" fill="#22c55e" name='Profit' radius={[4, 4, 0, 0]} />
+                                    <Bar dataKey="loss" fill="#ef4444" name='Loss' radius={[4, 4, 0, 0]} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                            ) : (
+                                <div className="text-muted-foreground flex py-26 items-center justify-center">No Transactions found !</div>
+                            )
+                        }
                     </div>
-
                 </CardContent>
             </Card>
-
-
         </div>
     )
 }

@@ -24,9 +24,9 @@ export default function Footer() {
                 <div>
                     <h2 className="text-xl font-semibold">Quick Links</h2>
                     <ul className="mt-2 space-y-2">
-                        <li><button onClick={() => scrollTo(refs.aboutRef)} className="text-gray-400 hover:text-white">About Us</button></li>
-                        <li><button onClick={() => scrollTo(refs.featureRef)} className="text-gray-400 hover:text-white">Features</button></li>
-                        <li><button onClick={() => scrollTo(refs.worksRef)} className="text-gray-400 hover:text-white">How it Works</button></li>
+                        <Link href="/#about"><li><button onClick={() => scrollTo(refs.aboutRef)} className="text-gray-400 hover:text-white">About Us</button></li></Link>
+                        <Link href="/#features"><li><button onClick={() => scrollTo(refs.featureRef)} className="text-gray-400 hover:text-white">Features</button></li></Link>
+                        <Link href="/#works"><li><button onClick={() => scrollTo(refs.worksRef)} className="text-gray-400 hover:text-white">How it Works</button></li></Link>
                         <li><button onClick={triggerGlow} className="text-gray-400 hover:text-white">Contact</button></li>
                     </ul>
                 </div>

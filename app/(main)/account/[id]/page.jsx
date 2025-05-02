@@ -21,7 +21,7 @@ export default async function AccountPage({ params }) {
 
     return (
         <div className='space-y-8 px-5'>
-            <div className='flex gap-4 items-end justify-between'>
+            <div className='md:flex gap-4 items-end justify-between flex-end'>
                 <div>
                     <h1 className='text-5xl sm:text-6xl font-bold gradient-title capitalize'>
                         {account.name}
