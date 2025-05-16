@@ -13,7 +13,7 @@
 - Built with Next.js, Tailwind CSS, Gemini AI, Prisma, and Supabase. 
 - Features include conversational AI for investment queries, personalized recommendations, and financial literacy tools. 
 - Addresses the lack of financial guidance in India, where literacy levels are low.
-  
+
 ---
 
 ## 🧠 Team & Approach
@@ -54,7 +54,6 @@ None
 ---
 
 ## ✨ Key Features
-- Conversational AI for answering investment queries (e.g., “Should I invest in mutual funds?”) 
 - Personalized investment recommendations based on user risk profiles 
 - Financial literacy tutorials and quizzes to educate users 
 - Real:time market analysis and alerts for investment opportunities 
@@ -65,6 +64,7 @@ None
 
 ## 📽️ Demo & Deliverables
 
+- **Deployed Website Link:** https://ai-investment-manager.vercel.app/
 - **Demo Video Link:** https://youtu.be/2M2RvMh8x3A
 - **Pitch Deck / PPT Link:** https://docs.google.com/presentation/d/14pcwyclWKO6OnyWGHcm-hj87IREDGD-I/edit
 
@@ -72,9 +72,9 @@ None
 
 ## ✅ Tasks & Bonus Checklist
 
-- [✅ ] **All members of the team completed the mandatory task - Followed at least 2 of our social channels and filled the form** (Details in Participant Manual)  
-- [✅ ] **All members of the team completed Bonus Task 1 - Sharing of Badges and filled the form (2 points)**  (Details in Participant Manual)
-- [✅ ] **All members of the team completed Bonus Task 2 - Signing up for Sprint.dev and filled the form (3 points)**  (Details in Participant Manual)
+- [✅ ] **All members of the team completed the mandatory task - Followed at least 2 of our social channels and filled the form**  
+- [✅ ] **All members of the team completed Bonus Task 1 - Sharing of Badges and filled the form (2 points)** 
+- [✅ ] **All members of the team completed Bonus Task 2 - Signing up for Sprint.dev and filled the form (3 points)** 
 
 *(Mark with ✅ if completed)*
 
