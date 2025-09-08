@@ -18,15 +18,6 @@
 
 ## 🧠 Team & Approach
 
-### Team Name:  
-`Code Breakers`
-
-### Team Members:  
-- Shivam Mishra (Leader)  
-- Naman Bhatia  (Member)
-- Sudhanshu Sharma (Member)
-- Gomini Gautam (Member)
-
 ### Your Approach:  
 
 - How different is it from any of the other existing ideas? 
