@@ -1,9 +1,9 @@
 
 # 🚀 Project Title
- GenAI Powered financial assistant - AI Investment Manager
+ **GenAI Powered financial assistant - AI Investment Manager**
 
 ## 📌 Problem Aim
-**PS 6: Better Finance for Everyone**
+**Better Finance for Everyone**
 
 ---
 
