@@ -1,9 +1,9 @@
 
 # 🚀 Project Title
- GenAI Powered financial assistant
+ GenAI Powered financial assistant - AI Investment Manager
 
-## 📌 Problem Statement
-**PS 6: Better Finance for Everyone with Stellar**
+## 📌 Problem Aim
+**PS 6: Better Finance for Everyone**
 
 ---
 
@@ -16,9 +16,7 @@
 
 ---
 
-## 🧠 Team & Approach
-
-### Your Approach:  
+###  Approach:  
 
 - How different is it from any of the other existing ideas? 
 - Unlike traditional financial advisors, this assistant uses GenAI to provide conversational, real:time investment guidance tailored to user needs.
@@ -40,9 +38,6 @@
 - Database: Supabase, prisma
 - APIs: Gemini API
 
-### Sponsor Technologies Used (if any):
-None
----
 
 ## ✨ Key Features
 - Personalized investment recommendations based on user risk profiles 
@@ -56,18 +51,6 @@ None
 ## 📽️ Demo & Deliverables
 
 - **Deployed Website Link:** https://ai-investment-manager.vercel.app/
-- **Demo Video Link:** https://youtu.be/2M2RvMh8x3A
-- **Pitch Deck / PPT Link:** https://docs.google.com/presentation/d/14pcwyclWKO6OnyWGHcm-hj87IREDGD-I/edit
-
----
-
-## ✅ Tasks & Bonus Checklist
-
-- [✅ ] **All members of the team completed the mandatory task - Followed at least 2 of our social channels and filled the form**  
-- [✅ ] **All members of the team completed Bonus Task 1 - Sharing of Badges and filled the form (2 points)** 
-- [✅ ] **All members of the team completed Bonus Task 2 - Signing up for Sprint.dev and filled the form (3 points)** 
-
-*(Mark with ✅ if completed)*
 
 ---
 
@@ -89,7 +72,7 @@ ARCJET_KEY =
 RESEND_API_KEY =  
 GEMINI_API_KEY =
 ```
-- When localhost:3000 is loaded then at the bottom right corner click on claim clerk keys and add informationa and paste keys from there in .env file.
+- When localhost:3000 is loaded then at the bottom right corner click on claim clerk keys and add information and paste keys from there in .env file.
 - Also paste other keys as given.
 
 ### Local Setup:
