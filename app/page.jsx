@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="mt-40">
       <HeroSection />
-      <section ref={refs.aboutRef} id="about" className="scroll-mt-24 py-20 bg-blue-50">
+      {/* <section ref={refs.aboutRef} id="about" className="scroll-mt-24 py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {statsData.map((statsData, index) => (
@@ -26,7 +26,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section ref={refs.featureRef} id="features" className="scroll-mt-24 py-20">
         <div className="container mx-auto px-4">
